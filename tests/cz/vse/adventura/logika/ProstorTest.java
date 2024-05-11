@@ -1,6 +1,7 @@
 package cz.vse.adventura.logika;
 
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -12,31 +13,76 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author    Jarmila Pavlíčková
  * @version   pro skolní rok 2016/2017
  */
-public class ProstorTest
-{
-    //== Datové atributy (statické i instancí)======================================
+public class ProstorTest {
+    private Prostor lodicka;
+    private Prostor voda;
+    private Prostor prid;
+    private Prostor zad;
+    private Prostor paluba;
+    private Prostor schodiste;
+    private Prostor sklad;
+    private Prostor kajuta;
 
-    //== Konstruktory a tovární metody =============================================
-    //-- Testovací třída vystačí s prázdným implicitním konstruktorem ----------
-
-    //== Příprava a úklid přípravku ================================================
-
-    //== Soukromé metody používané v testovacích metodách ==========================
-
-    //== Vlastní testovací metody ==================================================
+    /**
+     * Vytváří prostory hry, kterými hráč může procházet.
+     */
+    @BeforeEach
+    public void setUp() {
+        lodicka = new Prostor("lodička","lodička na hladině, na které jsi přijel.");
+        voda = new Prostor("voda", "voda");
+        prid = new Prostor("příď","příď potopené lodi");
+        zad = new Prostor("záď","záď potopené lodi");
+        paluba = new Prostor("paluba","paluba - střed potopené lodi");
+        schodiste = new Prostor("schodiště","Schodiště do podpalubí potopené lodi");
+        sklad = new Prostor("sklad","sklad v podpalubí potopené lodi");
+        kajuta = new Prostor("kajuta","kajuta v podpalubí potopené lodi");
+    }
 
     /**
      * Testuje, zda jsou správně nastaveny průchody mezi prostory hry. Prostory
-     * nemusí odpovídat vlastní hře, 
+     * nemusí odpovídat vlastní hře.
      */
     @Test
-    public  void testLzeProjit() {		
-        Prostor prostor1 = new Prostor("hala", "vstupní hala budovy VŠE na Jižním městě");
-        Prostor prostor2 = new Prostor("bufet", "bufet, kam si můžete zajít na svačinku");
-        prostor1.setVychod(prostor2);
-        prostor2.setVychod(prostor1);
-        assertEquals(prostor2, prostor1.vratSousedniProstor("bufet"));
-        assertEquals(null, prostor2.vratSousedniProstor("pokoj"));
+    public  void testLzeProjit() {
+        lodicka.setVychod(voda);
+        voda.setVychod(lodicka);
+        voda.setVychod(paluba);
+        voda.setVychod(prid);
+        voda.setVychod(zad);
+        paluba.setVychod(voda);
+        paluba.setVychod(zad);
+        paluba.setVychod(prid);
+        paluba.setVychod(schodiste);
+        zad.setVychod(voda);
+        zad.setVychod(paluba);
+        prid.setVychod(paluba);
+        prid.setVychod(voda);
+        schodiste.setVychod(paluba);
+        schodiste.setVychod(sklad);
+        schodiste.setVychod(kajuta);
+        kajuta.setVychod(schodiste);
+        sklad.setVychod(schodiste);
+
+        assertEquals(voda, lodicka.vratSousedniProstor("voda"));
+        assertEquals(lodicka, voda.vratSousedniProstor("lodička"));
+        assertEquals(prid, voda.vratSousedniProstor("příď"));
+        assertEquals(paluba, voda.vratSousedniProstor("paluba"));
+        assertEquals(zad, voda.vratSousedniProstor("záď"));
+        assertEquals(voda, prid.vratSousedniProstor("voda"));
+        assertEquals(voda, paluba.vratSousedniProstor("voda"));
+        assertEquals(voda, zad.vratSousedniProstor("voda"));
+        assertEquals(prid, paluba.vratSousedniProstor("příď"));
+        assertEquals(paluba, prid.vratSousedniProstor("paluba"));
+        assertEquals(paluba, zad.vratSousedniProstor("paluba"));
+        assertEquals(zad, paluba.vratSousedniProstor("záď"));
+        assertEquals(schodiste, paluba.vratSousedniProstor("schodiště"));
+        assertEquals(paluba, schodiste.vratSousedniProstor("paluba"));
+        assertEquals(schodiste, kajuta.vratSousedniProstor("schodiště"));
+        assertEquals(kajuta, schodiste.vratSousedniProstor("kajuta"));
+        assertEquals(schodiste, sklad.vratSousedniProstor("schodiště"));
+        assertEquals(sklad, schodiste.vratSousedniProstor("sklad"));
+
+        assertEquals(null, voda.vratSousedniProstor("sklad"));
     }
 
 }

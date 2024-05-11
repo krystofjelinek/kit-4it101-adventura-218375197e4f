@@ -61,6 +61,6 @@ public class HraTest {
         assertEquals(false, hra1.konecHry());
         assertEquals("hluboký_les", hra1.getHerniPlan().getAktualniProstor().getNazev());
         hra1.zpracujPrikaz("konec");
-        assertEquals(true, hra1.konecHry());
+        assertEquals(true, hra1.konecHry()); //TODO doplnit test celé hry
     }
 }

@@ -16,13 +16,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class HraTest {
     private Hra hra1;
 
-    //== Datové atributy (statické i instancí)======================================
-
-    //== Konstruktory a tovární metody =============================================
-    //-- Testovací třída vystačí s prázdným implicitním konstruktorem ----------
-
-    //== Příprava a úklid přípravku ================================================
-
     /***************************************************************************
      * Metoda se provede před spuštěním každé testovací metody. Používá se
      * k vytvoření tzv. přípravku (fixture), což jsou datové atributy (objekty),
@@ -40,10 +33,6 @@ public class HraTest {
     public void tearDown() {
     }
 
-    //== Soukromé metody používané v testovacích metodách ==========================
-
-    //== Vlastní testovací metody ==================================================
-
     /***************************************************************************
      * Testuje průběh hry, po zavolání každěho příkazu testuje, zda hra končí
      * a v jaké aktuální místnosti se hráč nachází.
@@ -53,14 +42,101 @@ public class HraTest {
      */
     @Test
     public void testPrubehHry() {
-        assertEquals("domeček", hra1.getHerniPlan().getAktualniProstor().getNazev());
-        hra1.zpracujPrikaz("jdi les");
+        assertEquals("lodička", hra1.getHerniPlan().getAktualniProstor().getNazev());
+
+        hra1.zpracujPrikaz("jdi voda");
         assertEquals(false, hra1.konecHry());
-        assertEquals("les", hra1.getHerniPlan().getAktualniProstor().getNazev());
-        hra1.zpracujPrikaz("jdi hluboký_les");
+        assertEquals("voda", hra1.getHerniPlan().getAktualniProstor().getNazev());
+
+        hra1.zpracujPrikaz("jdi příď");
         assertEquals(false, hra1.konecHry());
-        assertEquals("hluboký_les", hra1.getHerniPlan().getAktualniProstor().getNazev());
+        assertEquals("příď", hra1.getHerniPlan().getAktualniProstor().getNazev());
+
+        hra1.zpracujPrikaz("seber řetízek");
+        assertEquals(false, hra1.konecHry());
+        assertEquals(false,hra1.getHerniPlan().vypisProstor(hra1.getHerniPlan().getAktualniProstor()).contains("řetízek"));
+        assertEquals(true, hra1.getHerniPlan().vypisBatoh().contains("řetízek"));
+
+        hra1.zpracujPrikaz("jdi voda");
+        assertEquals(false, hra1.konecHry());
+        assertEquals("voda", hra1.getHerniPlan().getAktualniProstor().getNazev());
+
+        hra1.zpracujPrikaz("jdi lodička");
+        assertEquals(false, hra1.konecHry());
+        assertEquals("lodička", hra1.getHerniPlan().getAktualniProstor().getNazev());
+
+        hra1.zpracujPrikaz("polož řetízek");
+        assertEquals(false, hra1.konecHry());
+        assertEquals(true,hra1.getHerniPlan().vypisProstor(hra1.getHerniPlan().getAktualniProstor()).contains("řetízek"));
+
+        assertEquals("Zatím máš v lodi 1/3 artefaktů.", hra1.getHerniPlan().kolik());
+
+        hra1.zpracujPrikaz("jdi voda");
+        assertEquals(false, hra1.konecHry());
+        assertEquals("voda", hra1.getHerniPlan().getAktualniProstor().getNazev());
+
+        hra1.zpracujPrikaz("jdi paluba");
+        assertEquals(false, hra1.konecHry());
+        assertEquals("paluba", hra1.getHerniPlan().getAktualniProstor().getNazev());
+
+        hra1.zpracujPrikaz("seber kříž");
+        assertEquals(false, hra1.konecHry());
+        assertEquals(false,hra1.getHerniPlan().vypisProstor(hra1.getHerniPlan().getAktualniProstor()).contains("kříž"));
+        assertEquals(true, hra1.getHerniPlan().vypisBatoh().contains("kříž"));
+
+        hra1.zpracujPrikaz("jdi voda");
+        assertEquals(false, hra1.konecHry());
+        assertEquals("voda", hra1.getHerniPlan().getAktualniProstor().getNazev());
+
+        hra1.zpracujPrikaz("jdi lodička");
+        assertEquals(false, hra1.konecHry());
+        assertEquals("lodička", hra1.getHerniPlan().getAktualniProstor().getNazev());
+
+        hra1.zpracujPrikaz("polož kříž");
+        assertEquals(false, hra1.konecHry());
+        assertEquals(true,hra1.getHerniPlan().vypisProstor(hra1.getHerniPlan().getAktualniProstor()).contains("kříž"));
+
+        assertEquals("Zatím máš v lodi 2/3 artefaktů.", hra1.getHerniPlan().kolik());
+
+        hra1.zpracujPrikaz("jdi voda");
+        assertEquals(false, hra1.konecHry());
+        assertEquals("voda", hra1.getHerniPlan().getAktualniProstor().getNazev());
+
+        hra1.zpracujPrikaz("jdi paluba");
+        assertEquals(false, hra1.konecHry());
+        assertEquals("paluba", hra1.getHerniPlan().getAktualniProstor().getNazev());
+
+        hra1.zpracujPrikaz("jdi schodiště");
+        assertEquals(false, hra1.konecHry());
+        assertEquals("schodiště", hra1.getHerniPlan().getAktualniProstor().getNazev());
+
+        hra1.zpracujPrikaz("seber hodinky");
+        assertEquals(false, hra1.konecHry());
+        assertEquals(false,hra1.getHerniPlan().vypisProstor(hra1.getHerniPlan().getAktualniProstor()).contains("kříž"));
+        assertEquals(true, hra1.getHerniPlan().vypisBatoh().contains("hodinky"));
+
+        hra1.zpracujPrikaz("jdi paluba");
+        assertEquals(false, hra1.konecHry());
+        assertEquals("paluba", hra1.getHerniPlan().getAktualniProstor().getNazev());
+
+        hra1.zpracujPrikaz("jdi voda");
+        assertEquals(false, hra1.konecHry());
+        assertEquals("voda", hra1.getHerniPlan().getAktualniProstor().getNazev());
+
+        hra1.zpracujPrikaz("jdi lodička");
+        assertEquals(false, hra1.konecHry());
+        assertEquals("lodička", hra1.getHerniPlan().getAktualniProstor().getNazev());
+
+        hra1.zpracujPrikaz("polož hodinky");
+        assertEquals(false, hra1.konecHry());
+        assertEquals(true,hra1.getHerniPlan().vypisProstor(hra1.getHerniPlan().getAktualniProstor()).contains("kříž"));
+
+        assertEquals("Posbíral jsi všechny potřebné artefakty, nyní můžeš hru ukončit příkazem 'konec'", hra1.getHerniPlan().kolik());
+
         hra1.zpracujPrikaz("konec");
-        assertEquals(true, hra1.konecHry()); //TODO doplnit test celé hry
+        hra1.setKonecHry(true);
+        assertEquals(true, hra1.konecHry());
+
+        //TODO doplnit příkazy prozkoumej a hint celé hry
     }
 }

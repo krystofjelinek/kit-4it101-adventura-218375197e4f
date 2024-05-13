@@ -17,7 +17,7 @@ class PrikazKonecTest {
 
     @Test
     void provedPrikaz() {
-        prikazKonec.provedPrikaz("");
+        assertEquals("hra ukončena příkazem konec", prikazKonec.provedPrikaz());
     }
 
     @Test

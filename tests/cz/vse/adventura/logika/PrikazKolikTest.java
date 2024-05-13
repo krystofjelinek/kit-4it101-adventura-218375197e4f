@@ -17,7 +17,7 @@ class PrikazKolikTest {
 
     @Test
     void provedPrikaz() {
-        prikazKolik.provedPrikaz("");
+        assertEquals("Zatím máš v lodi 0/3 artefaktů.", prikazKolik.provedPrikaz());
     }
 
     @Test

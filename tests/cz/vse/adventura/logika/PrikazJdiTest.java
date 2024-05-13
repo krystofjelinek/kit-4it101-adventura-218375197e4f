@@ -14,10 +14,16 @@ class PrikazJdiTest {
         plan = new HerniPlan();
         prikazJdi = new PrikazJdi(plan);
     }
-
+    /**
+     * Testuje funkcionalitu příkazu "jdi".
+     * */
     @Test
     void provedPrikaz() {
-        prikazJdi.provedPrikaz("");
+        prikazJdi.provedPrikaz("voda");
+        assertEquals("voda", plan.getAktualniProstor().getNazev());
+
+        prikazJdi.provedPrikaz("ostrov");
+        assertNotEquals("ostrov", plan.getAktualniProstor().getNazev());
     }
 
     @Test

@@ -8,37 +8,41 @@ import static org.junit.jupiter.api.Assertions.*;
 class BatohTest {
 
     private Batoh batoh;
-    private Vec vec;
+    private Vec vecPrenositelna;
+    private Vec vecNeprenositelna;
 
     @BeforeEach
     void setUp() {
-        vec = new Vec("vec", "tajnaVec", true);
+        vecPrenositelna = new Vec("vec1", "tajnaVec", true);
+        vecNeprenositelna = new Vec("vec2", "tajnaVec", false);
         batoh = new Batoh();
-        batoh.pridejVecDoBatohu(vec);
-    }
 
-    @Test
-    void vratObsahBatohu() {
-        batoh.vratObsahBatohu();
     }
-
     @Test
     void pridejVecDoBatohu() {
-        assertEquals(1, batoh.vratObsahBatohu().size());
+        batoh.pridejVecDoBatohu(vecPrenositelna);
     }
-
+    @Test
+    void vratObsahBatohu() {
+        batoh.pridejVecDoBatohu(vecPrenositelna);
+        batoh.vratObsahBatohu();
+    }
     @Test
     void vyhodVecZBatohu() {
-        batoh.vyhodVecZBatohu(vec.getNazev());
+        batoh.pridejVecDoBatohu(vecPrenositelna);
+        batoh.vyhodVecZBatohu(vecPrenositelna.getNazev());
     }
 
     @Test
     void jeVecVBatohu() {
-        assertEquals(true, batoh.jeVecVBatohu(vec.getNazev()));
+        batoh.pridejVecDoBatohu(vecPrenositelna);
+        assertEquals(true, batoh.jeVecVBatohu(vecPrenositelna.getNazev()));
+        assertEquals(false, batoh.jeVecVBatohu(vecNeprenositelna.getNazev()));
     }
 
     @Test
     void getVec() {
-        assertEquals(vec, batoh.getVec(vec.getNazev()));
+        batoh.pridejVecDoBatohu(vecPrenositelna);
+        assertEquals(vecPrenositelna, batoh.getVec(vecPrenositelna.getNazev()));
     }
 }

@@ -16,7 +16,9 @@ class PrikazNapovedaTest {
 
     @Test
     void provedPrikaz() {
-        prikazNapoveda.provedPrikaz("");
+        assertEquals("Tvým úkolem je nalézt v potopeném vraku tři historicky cenné artefakty\n"
+                + "musíš je vylovit a dostat na palubu lodi ve které jsi přijel.\n"
+                + "\n" + "Můžeš zadat tyto příkazy:\n", prikazNapoveda.provedPrikaz());
     }
 
     @Test

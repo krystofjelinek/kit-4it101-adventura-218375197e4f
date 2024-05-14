@@ -130,15 +130,8 @@ public class HraTest {
         assertEquals("lodička", hra1.getHerniPlan().getAktualniProstor().getNazev());
 
         hra1.zpracujPrikaz("polož hodinky");
-        assertEquals(false, hra1.konecHry());
         assertEquals(true,hra1.getHerniPlan().vypisProstor(hra1.getHerniPlan().getAktualniProstor()).contains("kříž"));
-
-        hra1.zpracujPrikaz("kolik");
-        assertEquals(false, hra1.konecHry());
-        assertEquals("Posbíral jsi všechny potřebné artefakty, nyní můžeš hru ukončit příkazem 'konec'", hra1.getHerniPlan().kolik());
-
-        hra1.zpracujPrikaz("konec");
-        hra1.setKonecHry(true);
         assertEquals(true, hra1.konecHry());
+
     }
 }

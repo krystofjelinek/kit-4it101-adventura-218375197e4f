@@ -4,7 +4,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+/*******************************************************************************
+ * Testovací třída PrikazHintTest slouží ke komplexnímu otestování třídy PrikazHint
+ *
+ * @author    Kryštof Jelínek
+ * @version   LS 2023/23
+ */
 class PrikazHintTest {
     private HerniPlan plan;
     private PrikazHint prikazHint;
@@ -17,6 +22,9 @@ class PrikazHintTest {
         prikazJdi = new PrikazJdi(plan);
     }
 
+    /**
+     * Testuje funcionalitu příkazu "hint".
+     */
     @Test
     void provedPrikaz() {
         prikazJdi.provedPrikaz("voda");

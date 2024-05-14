@@ -4,7 +4,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+/*******************************************************************************
+ * Testovací třída PrikazSeberTest slouží ke komplexnímu otestování třídy PrikazSeber
+ *
+ * @author    Kryštof Jelínek
+ * @version   LS 2023/23
+ */
 class PrikazSeberTest {
     private PrikazSeber prikazSeber;
     private PrikazJdi prikazJdi;
@@ -17,6 +22,9 @@ class PrikazSeberTest {
         prikazJdi = new PrikazJdi(plan);
     }
 
+    /**
+     * Testuje funkcionalitu příkazu "seber"
+     */
     @Test
     void provedPrikaz() {
         prikazJdi.provedPrikaz("voda");

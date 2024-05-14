@@ -4,7 +4,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+/*******************************************************************************
+ * Testovací třída PrikazProzkoumejTest slouží ke komplexnímu otestování třídy PrikazProzkoumej
+ *
+ * @author    Kryštof Jelínek
+ * @version   LS 2023/23
+ */
 class PrikazProzkoumejTest {
     private PrikazProzkoumej prikazProzkoumej;
     private PrikazJdi prikazJdi;
@@ -17,6 +22,9 @@ class PrikazProzkoumejTest {
         prikazJdi = new PrikazJdi(plan);
     }
 
+    /**
+     * Testuje funkcionalitu příkazu "prozkoumej".
+     */
     @Test
     void provedPrikaz() {
         prikazJdi.provedPrikaz("voda");

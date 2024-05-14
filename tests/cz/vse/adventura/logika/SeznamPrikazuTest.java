@@ -9,8 +9,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * Testovací třída SeznamPrikazuTest slouží ke komplexnímu otestování třídy  
  * SeznamPrikazu
  * 
- * @author    Luboš Pavlíček
- * @version   pro školní rok 2016/2017
+ * @author    Luboš Pavlíček, Kryštof Jelínek
+ * @version   pro školní rok 2016/2017 -> LS 2023/24
  */
 public class SeznamPrikazuTest {
     private Hra hra;

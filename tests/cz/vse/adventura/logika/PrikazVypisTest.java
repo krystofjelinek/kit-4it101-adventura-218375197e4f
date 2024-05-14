@@ -5,7 +5,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
+/*******************************************************************************
+ * Testovací třída PrikazVypisTest slouží ke komplexnímu otestování třídy PrikazVypis
+ *
+ * @author    Kryštof Jelínek
+ * @version   LS 2023/23
+ */
 class PrikazVypisTest {
     private PrikazVypis prikazVypis;
     private HerniPlan plan;

@@ -1,6 +1,5 @@
 package cz.vse.adventura.logika;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,8 +9,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * Testovací třída HraTest slouží ke komplexnímu otestování
  * třídy Hra
  *
- * @author    Jarmila Pavlíčková
- * @version  pro školní rok 2016/2017
+ * @author    Jarmila Pavlíčková, Kryštof Jelínek
+ * @version   pro školní rok 2016/2017 -> LS 2023/24
  */
 public class HraTest {
     private Hra hra1;
@@ -24,13 +23,6 @@ public class HraTest {
     @BeforeEach
     public void setUp() {
         hra1 = new Hra();
-    }
-
-    /***************************************************************************
-     * Úklid po testu - tato metoda se spustí po vykonání každé testovací metody.
-     */
-    @AfterEach
-    public void tearDown() {
     }
 
     /***************************************************************************
@@ -148,7 +140,5 @@ public class HraTest {
         hra1.zpracujPrikaz("konec");
         hra1.setKonecHry(true);
         assertEquals(true, hra1.konecHry());
-
-        //TODO doplnit příkazy prozkoumej a hint celé hry
     }
 }

@@ -4,7 +4,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+/*******************************************************************************
+ * Testovací třída PrikazPolozTest slouží ke komplexnímu otestování třídy PrikazPoloz
+ *
+ * @author    Kryštof Jelínek
+ * @version   LS 2023/23
+ */
 class PrikazPolozTest {
     private PrikazPoloz prikazPoloz;
     private PrikazSeber prikazSeber;
@@ -19,6 +24,9 @@ class PrikazPolozTest {
         prikazSeber = new PrikazSeber(plan);
     }
 
+    /**
+     * Testuje funkcionalitu příkazu "polož"
+     */
     @Test
     void provedPrikaz() {
         prikazJdi.provedPrikaz("voda");

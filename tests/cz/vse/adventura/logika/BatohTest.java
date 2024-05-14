@@ -4,7 +4,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+/*******************************************************************************
+ * Testovací třída BatohTest slouží ke komplexnímu otestování třídy Batoh
+ *
+ * @author    Kryštof Jelínek
+ * @version   LS 2023/23
+ */
 class BatohTest {
 
     private Batoh batoh;
@@ -18,21 +23,35 @@ class BatohTest {
         batoh = new Batoh();
 
     }
+
+    /**
+     * Testuje přidání věci do batohu.
+     */
     @Test
     void pridejVecDoBatohu() {
         batoh.pridejVecDoBatohu(vecPrenositelna);
     }
+
+    /**
+     * Testuje vypsání obsahu batohu.
+     */
     @Test
     void vratObsahBatohu() {
         batoh.pridejVecDoBatohu(vecPrenositelna);
         batoh.vratObsahBatohu();
     }
+
+    /**
+     * Testuje vyhození/vymazání věci z batohu.
+     */
     @Test
     void vyhodVecZBatohu() {
         batoh.pridejVecDoBatohu(vecPrenositelna);
         batoh.vyhodVecZBatohu(vecPrenositelna.getNazev());
     }
-
+    /**
+     * Testuje zdali je věc v batohu.
+     */
     @Test
     void jeVecVBatohu() {
         batoh.pridejVecDoBatohu(vecPrenositelna);
